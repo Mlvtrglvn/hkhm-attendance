@@ -1,3 +1,8 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <h1>Login</h1>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <label for="api-key">Api key</label>
+    <input type="text" [(ngModel)]="apiKey" class="form-control" id="api-key" name="apikeyinput" required/>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

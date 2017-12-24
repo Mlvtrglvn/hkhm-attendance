@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {ApiKeyService} from '../api-key.service';
+
 
 @Component({
   selector: 'app-login',
@@ -7,10 +10,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() {
+  private apiKey: String = '';
+
+  constructor(private router: Router, private apiKeyService: ApiKeyService) {
   }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    this.apiKeyService.setApiKey(this.apiKey.trim());
+    this.router.navigate(['events']);
   }
 
 }

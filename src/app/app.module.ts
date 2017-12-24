@@ -7,6 +7,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {LoginComponent} from './login/login.component';
 import {EventsComponent} from './events/events.component';
 import {EventDetailComponent} from './event-detail/event-detail.component';
+import {FormsModule} from '@angular/forms';
+import {ApiKeyService} from './api-key.service';
 
 
 @NgModule({
@@ -19,9 +21,10 @@ import {EventDetailComponent} from './event-detail/event-detail.component';
   imports: [
     BrowserModule,
     AsyncLocalStorageModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ApiKeyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
