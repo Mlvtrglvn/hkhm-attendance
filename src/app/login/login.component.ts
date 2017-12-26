@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ApiKeyService} from '../api-key.service';
+import {OAuthService} from 'angular-oauth2-oidc';
 
 
 @Component({
@@ -9,18 +9,11 @@ import {ApiKeyService} from '../api-key.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  private apiKey: String = '';
-
-  constructor(private router: Router, private apiKeyService: ApiKeyService) {
+  constructor(private router: Router, private oauthService: OAuthService) {
   }
 
   ngOnInit() {
-  }
-
-  onSubmit() {
-    this.apiKeyService.setApiKey(this.apiKey.trim());
-    this.router.navigate(['events']);
+    this.oauthService.initImplicitFlow();
   }
 
 }

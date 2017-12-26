@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {ApiKeyService} from '../api-key.service';
+import {MeetupApiService} from '../meetup-api.service';
 
 @Component({
   selector: 'app-events',
@@ -13,19 +13,12 @@ export class EventsComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private apiKeyService: ApiKeyService) {
-    route.params.subscribe(val => {
-      // put the code from `ngOnInit` here
-    });
+              private eventsService: MeetupApiService) {
   }
 
   ngOnInit() {
-    this.apiKey = this.apiKeyService.getApiKey();
+    this.eventsService.refreshEventsList();
 
-    console.log('Api key: ' + this.apiKey);
-    if (this.apiKey.trim() === '') {
-      this.router.navigate(['/login']);
-    }
   }
 
 }
